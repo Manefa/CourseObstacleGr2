@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,18 @@ public class GameManager : MonoBehaviour
     {
         _collisions = 0;
         _tempsDepart = Time.time;
+        Time.timeScale = 1;
+        
+    }
+
+    private void Update()
+    {
+        // verifie si je suis sur une scene qui n'est pas un niveau de jeu si c'est le cas detruire la GameManager
+
+        if(SceneManager.GetActiveScene().buildIndex== 0 || SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            Destroy(gameObject);
+        }
         
     }
 
